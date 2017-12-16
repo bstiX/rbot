@@ -4,7 +4,7 @@
 // @description Filter news and news sources on rbot.fi
 // @include     https://rbot.fi/*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
-// @version     0.1.0
+// @version     0.1.1
 // ==/UserScript==
 
 //console.log = function() {}
@@ -43,7 +43,7 @@ hide = [
 
 ];
 
-hideRegexp = "(?:^|\\s)(" + hide.join("|") + ")(?:\\s)";
+hideRegexp = "(?:^|\\s)(" + hide.join("|") + ")(?:[\\s|\\?])";
 
 this.$ = this.jQuery = jQuery.noConflict(true);
 
@@ -51,10 +51,10 @@ this.$ = this.jQuery = jQuery.noConflict(true);
   sCount = 0;
   cCount = 0;
   tCount = 0;
-  
+
   hidenews = function() {
     hideRe = new RegExp(hideRegexp, "i");
-    
+ 
     $("li.newsgroup-item").find("div.cell+.source").each(function() {
       try {
         s = $.trim($(this).text());
@@ -80,7 +80,7 @@ this.$ = this.jQuery = jQuery.noConflict(true);
           //console.log(s);
         }
 	    } catch(e) {console.log(e);}
-    })
+    });
     $("li.newsgroup-item").find("div.cell.headline").find("a[href]:not(.sources)").each(function() {
       title = $.trim($(this).text());
       if(hideRe.exec(title)) {
@@ -89,7 +89,7 @@ this.$ = this.jQuery = jQuery.noConflict(true);
 	      console.log("  *** " + title);
         tCount++;
       } else {
-	      //console.log(title);      
+	      //console.log(title);
       }
     });
   };

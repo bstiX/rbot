@@ -2,6 +2,8 @@
 
 Userscript created mostly for my own use. Tested only with Firefox 57.x and Greasemonkey 4.x.
 
+2017-12-17: Quickly tested with Tampermonkey v4.5.x and Violentmonkey v2.8.x without problems.
+
 This is just a temporary hack before rbot.fi has filtering features on its own.
 
 I'm not JavaScript developer, so use at your own risk!
